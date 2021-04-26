@@ -116,7 +116,15 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invocar archivo de flujo de trabajo" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="INSERTAR_EN_BD.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="DATA_TABLE">[data_table]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="DATA_TABLE">
+          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="data_table" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="EMPRESA_ID">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ID" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="NUMERO_ALBARAN">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="cod_albaran" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
