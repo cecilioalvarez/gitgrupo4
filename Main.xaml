@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="813.6,885.6" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="813.6,1192.8" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -67,7 +67,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="375.2,820.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="375.2,1128" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="STR_OCR" />
       <Variable x:TypeArguments="s:String[]" Name="ARRAY_LISTA" />
@@ -75,6 +75,7 @@
       <Variable x:TypeArguments="x:String" Name="CIF" />
       <Variable x:TypeArguments="x:String" Name="ID" />
       <Variable x:TypeArguments="x:String" Name="cod_albaran" />
+      <Variable x:TypeArguments="x:String" Name="ID_ALBARAN" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -108,22 +109,46 @@
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="SALIDA_DATATABLE">[data_table]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invocar archivo de flujo de trabajo" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="OBTENER_ID.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invocar archivo de flujo de trabajo" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="OBTENER_ID_EMPRESA.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="ENTRADA_CIF">[CIF]</InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="SALIDA_ID2">[ID]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="ENTRADA_CIF">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CIF" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="SALIDA_ID2">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="ID" />
+        </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invocar archivo de flujo de trabajo" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="INSERTAR_EN_BD.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="DATA_TABLE">
-          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="data_table" />
-        </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="EMPRESA_ID">
           <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ID" />
         </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="NUMERO_ALBARAN">
           <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="cod_albaran" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invocar archivo de flujo de trabajo" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="OBTENER_ID_ALBARAN.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="ENTRADA_ID2">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ID" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="ENTRADA_NUM_ALBARAN">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="cod_albaran" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="SALIDA_ID_ALBARAN">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="ID_ALBARAN" />
+        </OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invocar archivo de flujo de trabajo" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="INSERTAR_EN_BD_2.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="DATA_TABLE">
+          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="data_table" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="ENTRADA_ID_ALBARAN">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ID_ALBARAN" />
         </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
