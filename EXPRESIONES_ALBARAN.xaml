@@ -3,11 +3,12 @@
     <x:Property Name="ENTRADA_OCR" Type="InArgument(x:String)" />
     <x:Property Name="SALIDA_LISTA" Type="OutArgument(s:String[])" />
     <x:Property Name="SALIDA_CIF" Type="OutArgument(x:String)" />
+    <x:Property Name="SALIDA_CODIGO" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>813.6,2835.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>813.6,3037.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -44,7 +45,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="60">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="31">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -78,7 +79,7 @@
       <AssemblyReference>System.Interactive.Async</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="436,2770.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="436,2972.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="inicial" />
       <Variable x:TypeArguments="x:Int32" Name="posicion" />
@@ -92,6 +93,7 @@
       <Variable x:TypeArguments="s:String[]" Name="lista" />
       <Variable x:TypeArguments="x:String" Name="resutado" />
       <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="coincidencias" />
+      <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="coincidencias2" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -114,8 +116,9 @@
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
     <ui:Matches BuilderPattern="[a-z]-\d{8,}" DisplayName="Coincidencias" sap:VirtualizedContainerService.HintSize="394.4,60" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[inicial]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Avanzado&quot;,&quot;OperationValue&quot;:&quot;[a-z]-\\d{8,}&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactamente&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="[a-z]-\d{8,}" RegexOption="IgnoreCase" Result="[coincidencias]" />
-    <ui:Matches Input="{x:Null}" BuilderPattern="(=?NIF) .*{5,6}" DisplayName="Coincidencias" sap:VirtualizedContainerService.HintSize="394.4,60" sap2010:WorkflowViewState.IdRef="Matches_2" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Avanzado&quot;,&quot;OperationValue&quot;:&quot;(=?NIF) .*&quot;,&quot;QuantifierFirstValue&quot;:&quot;5&quot;,&quot;QuantifierID&quot;:&quot;BXYT&quot;,&quot;QuantifierName&quot;:&quot;Entre ocasiones x y y&quot;,&quot;QuantifierSecondValue&quot;:&quot;6&quot;}]" Pattern="(=?NIF) .*{5,6}" RegexOption="IgnoreCase" />
+    <ui:Matches BuilderPattern="\s\d{6}\s" DisplayName="Coincidencias" sap:VirtualizedContainerService.HintSize="394.4,60" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[inicial]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Avanzado&quot;,&quot;OperationValue&quot;:&quot;\\s\\d{6}\\s&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactamente&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\s\d{6}\s" RegexOption="IgnoreCase" Result="[coincidencias2]" />
     <WriteLine DisplayName="Escribir línea" sap:VirtualizedContainerService.HintSize="394.4,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_12" Text="[coincidencias.First().ToString]" />
+    <WriteLine DisplayName="Escribir línea" sap:VirtualizedContainerService.HintSize="394.4,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_13" Text="[coincidencias2.First().ToString]" />
     <WriteLine DisplayName="Escribir línea1" sap:VirtualizedContainerService.HintSize="394.4,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;la posicion es &quot; &amp; inicial.IndexOf(&quot;Importe&quot;).ToString]" />
     <Assign DisplayName="Asignar1.1" sap:VirtualizedContainerService.HintSize="394.4,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
@@ -229,6 +232,14 @@
       </Assign.To>
       <Assign.Value>
         <InArgument x:TypeArguments="x:String">[coincidencias.First().ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="394.4,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[SALIDA_CODIGO]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[coincidencias2.First().ToString]</InArgument>
       </Assign.Value>
     </Assign>
   </Sequence>
