@@ -80,6 +80,7 @@
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Secuencia" sap:VirtualizedContainerService.HintSize="376,380" sap2010:WorkflowViewState.IdRef="Sequence_10">
@@ -93,7 +94,7 @@
     </sap:WorkflowViewStateService.ViewState>
     <WriteLine DisplayName="Escribir línea" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="........................................................................INSERTAR_EN_BD......................................................................" />
     <ui:DatabaseConnect DatabaseConnection="[conexion]" DisplayName="Connect" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="DatabaseConnect_3" ProviderName="System.Data.Odbc" ConnectionString="Dsn=mysql;uid=root" />
-    <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" ExistingDbConnection="[conexion]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[&quot;INSERT INTO albaranes ( albaranes.empresa_id,albaranes.numero_albaran) VALUES ('&quot; &amp; EMPRESA_ID  &amp; &quot;' , '&quot; &amp; NUMERO_ALBARAN &amp; &quot;' )&quot;]">
+    <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" ExistingDbConnection="[conexion]" sap:VirtualizedContainerService.HintSize="334,88" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[&quot;INSERT INTO  albaranes ( albaranes.empresa_id,albaranes.numero_albaran) VALUES ('&quot; &amp; EMPRESA_ID  &amp; &quot;' , '&quot; &amp; NUMERO_ALBARAN &amp; &quot;' )&quot;]">
       <ui:ExecuteQuery.Parameters>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:ExecuteQuery.Parameters>
