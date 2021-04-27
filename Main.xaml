@@ -115,9 +115,15 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invocar archivo de flujo de trabajo" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="OBTENER_ID_ALBARAN.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="ENTRADA_ID2">[ID]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="ENTRADA_NUM_ALBARAN">[cod_albaran]</InArgument>
-        <OutArgument x:TypeArguments="x:String" x:Key="SALIDA_ID_ALBARAN">[ID_ALBARAN]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="ENTRADA_ID2">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ID" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="ENTRADA_NUM_ALBARAN">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="cod_albaran" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="SALIDA_ID_ALBARAN">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="ID_ALBARAN" />
+        </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invocar archivo de flujo de trabajo" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="INSERTAR_EN_BD_2.xaml">
