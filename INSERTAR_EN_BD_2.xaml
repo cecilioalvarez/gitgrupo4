@@ -139,7 +139,7 @@
                 </scg:List>
               </ui:MultipleAssign.AssignOperations>
             </ui:MultipleAssign>
-            <WriteLine DisplayName="Escribir línea" sap:VirtualizedContainerService.HintSize="436,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[ENTRADA_ID_ALBARAN]" />
+            <WriteLine DisplayName="Escribir línea" sap:VirtualizedContainerService.HintSize="436,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;LA ID DE ALBARAN ES &quot;&amp;ENTRADA_ID_ALBARAN]" />
             <ui:CommentOut DisplayName="Comentar" sap:VirtualizedContainerService.HintSize="436,229" sap2010:WorkflowViewState.IdRef="CommentOut_1">
               <ui:CommentOut.Body>
                 <Sequence DisplayName="Actividades ignoradas" sap:VirtualizedContainerService.HintSize="376,151" sap2010:WorkflowViewState.IdRef="Sequence_3">
