@@ -1,0 +1,70 @@
+{
+  "name": "proyecto_troncal",
+  "description": "Proceso en blanco",
+  "main": "Main.xaml",
+  "dependencies": {
+    "DropDownCheckBoxes": "[1.1.0.31568]",
+    "FreeSql.Provider.MySql": "[2.3.200]",
+    "FreeSql.Provider.MySqlConnector": "[2.3.200]",
+    "Oracle.ManagedDataAccess": "[19.11.0]",
+    "SapientGuardian.MySql.Data": "[6.9.816]",
+    "UiPath.Abbyy.Activities": "[1.4.2]",
+    "UiPath.Citrix.Activities": "[1.0.6]",
+    "UiPath.Database.Activities": "[1.4.0]",
+    "UiPath.Excel.Activities": "[2.10.3-beta.1494693]",
+    "UiPath.Form.Activities": "[1.2.1-preview]",
+    "UiPath.GoogleVision.Activities": "[1.2.0]",
+    "UiPath.GSuite.Activities": "[1.10.0-preview]",
+    "UiPath.Mail.Activities": "[1.10.3-beta.1500010]",
+    "UiPath.System.Activities": "[21.4.0-beta.1500069]",
+    "UiPath.UIAutomation.Activities": "[21.4.0-preview]",
+    "UiPathTeam.Barcode": "[1.0.6]",
+    "UiPathTeam.GoogleCloudPlatform.Activities": "[1.1.0]",
+    "UiPathTeam.GoogleSpreadsheet.Activities": "[1.0.2.1]",
+    "Xebia.SQLQueryBuilder.Activities": "[1.0.4]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "21.2.0.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "isPausable": true,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "modernBehavior": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "1df5f08a-c380-4df6-a4c4-ceb2c9b72f7d",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Legacy"
+}
